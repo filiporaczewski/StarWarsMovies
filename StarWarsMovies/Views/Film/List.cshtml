@@ -1,0 +1,16 @@
+﻿@model List<EpisodeInfo>
+
+<div class="page-header" style="margin-bottom: 20px;">
+    <h2>Star Wars Films</h2>
+</div>
+
+<table class="table">
+    <tbody>
+        @foreach (var episode in Model)
+        {
+            <tr>
+                <td>@episode.Title</td>
+            </tr>
+        }
+    </tbody>
+</table>
