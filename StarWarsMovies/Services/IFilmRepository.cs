@@ -13,5 +13,7 @@ namespace StarWarsMovies.Services
         Task<FilmWithRatings> GetByUrl(string url);
 
         Task<FilmWithRatings> Get(int id);
+
+        void Rate(FilmWithRatings film, int score);
     }
 }

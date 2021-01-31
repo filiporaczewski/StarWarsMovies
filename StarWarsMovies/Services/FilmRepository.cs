@@ -43,5 +43,12 @@ namespace StarWarsMovies.Services
                 (client, "https://swapi.dev/api/films/");
             return apiModel.Results;
         }
+
+        public void Rate(FilmWithRatings film, int score)
+        {
+            var rating = new Rating { Film = film, Score = score };
+            film.Ratings.Add(rating);
+            _dbContext.SaveChanges();
+        }
     }
 }

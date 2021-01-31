@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using StarWarsMovies.Models;
 using StarWarsMovies.Services;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,14 @@ namespace StarWarsMovies.Controllers
         {
             var film = await _filmRepository.GetByUrl(url);
             return View(film);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Rate(RatingViewModel ratingViewModel)
+        {
+            var film = await _filmRepository.Get(ratingViewModel.FilmId);
+            _filmRepository.Rate(film, ratingViewModel.Score);
+            return RedirectToAction("Details", new { url = ratingViewModel.EpisodeUrl }); 
         }
 
     }

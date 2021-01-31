@@ -10,3 +10,16 @@
     <li><span class="font-weight-bold">Producer: </span>@Model.EpisodeInfo.Producer</li>
     <li><span class="font-weight-bold">Rating: </span>@(Model.AverageScore.HasValue ? $"{decimal.Round(Model.AverageScore.Value, 2)}/10" : string.Empty)</li>
 </ul>
+
+<h3>Rate this episode</h3>
+@using(Html.BeginForm("Rate", "Film", FormMethod.Post))
+{
+    <form>
+        @Html.Hidden("FilmId", Model.Id)
+        @Html.Hidden("EpisodeUrl", Model.EpisodeInfo.Url)
+        <div>
+            @Html.TextBox("Score", null, new { type = "number", min = "1", max = "10", @class = "form-control", @id = "score-input" })
+            <input type="submit" value="Rate" class="btn btn-primary" />
+        </div>
+    </form>
+}
