@@ -9,6 +9,14 @@ namespace StarWarsMovies.Models
 {
     public class FilmWithRatings
     {
+        public FilmWithRatings()
+        {
+            if (this.Ratings == null)
+            {
+                this.Ratings = new List<Rating>();
+            }
+        }
+
         [Key]
         public int Id { get; set; }
 

@@ -25,5 +25,13 @@ namespace StarWarsMovies.Controllers
             var episodes = await _filmRepository.GetEpisodeInfos();
             return View(episodes);
         }
+
+        [HttpGet]
+        public async Task<IActionResult> Details(string url)
+        {
+            var film = await _filmRepository.GetByUrl(url);
+            return View(film);
+        }
+
     }
 }

@@ -8,9 +8,10 @@
     <tbody>
         @foreach (var episode in Model)
         {
-            <tr>
-                <td>@episode.Title</td>
-            </tr>
+        <tr>
+            <td>@episode.Title</td>
+            <td><span class="btn btn-link">@Html.ActionLink("Details", "Details", new { url = episode.Url })</span></td>
+        </tr>
         }
     </tbody>
 </table>

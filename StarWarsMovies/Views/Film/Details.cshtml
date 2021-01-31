@@ -1,0 +1,12 @@
+﻿@model FilmWithRatings
+
+<div class="page-header" style="margin-bottom: 20px;">
+    <h3>@Model.EpisodeInfo.Title</h3>
+</div>
+
+<ul>
+    <li><span class="font-weight-bold">Release date: </span>@Model.EpisodeInfo.ReleaseDate.ToString("MM/dd/yyyy")</li>
+    <li><span class="font-weight-bold">Director: </span>@Model.EpisodeInfo.Director</li>
+    <li><span class="font-weight-bold">Producer: </span>@Model.EpisodeInfo.Producer</li>
+    <li><span class="font-weight-bold">Rating: </span>@(Model.AverageScore.HasValue ? $"{decimal.Round(Model.AverageScore.Value, 2)}/10" : string.Empty)</li>
+</ul>

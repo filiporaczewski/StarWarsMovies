@@ -9,5 +9,9 @@ namespace StarWarsMovies.Services
     public interface IFilmRepository
     {
         Task<List<EpisodeInfo>> GetEpisodeInfos();
+
+        Task<FilmWithRatings> GetByUrl(string url);
+
+        Task<FilmWithRatings> Get(int id);
     }
 }
