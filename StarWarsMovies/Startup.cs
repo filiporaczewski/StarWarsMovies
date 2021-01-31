@@ -5,9 +5,11 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using StarWarsMovies.Persistance;
 using StarWarsMovies.Services;
 
 namespace StarWarsMovies
@@ -27,6 +29,10 @@ namespace StarWarsMovies
             services.AddControllersWithViews();
             services.AddScoped<IFilmRepository, FilmRepository>();
             services.AddHttpClient();
+            services.AddDbContext<FilmsWithRatingContext>(opt =>
+            {
+                opt.UseSqlServer(Configuration.GetConnectionString("FilmDatabase"));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
